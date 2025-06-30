@@ -6,7 +6,6 @@ const teachings = ref<Teaching[]>([]);
 const loading = ref(false);
 const error = ref<string | null>(null);
 
-
 export const useTeachings = () => {
   const fetchTeachings = async () => {
     loading.value = true;
@@ -14,7 +13,9 @@ export const useTeachings = () => {
 
     try {
       // Use real API call
-      const response = await axios.get("http://localhost:5000/api/teachings/");
+      const response = await axios.get(
+        "https://rev-thomas.onrender.com/api/teachings/"
+      );
       // Map _id to id for frontend compatibility
       teachings.value = response.data.map((t: any) => ({ ...t, id: t._id }));
     } catch (err) {
@@ -29,7 +30,7 @@ export const useTeachings = () => {
     try {
       // Use real API call
       const response = await axios.get(
-        `http://localhost:5000/api/teachings/${id}`
+        `https://rev-thomas.onrender.com/api/teachings/${id}`
       );
       // Map _id to id
       const teaching = { ...response.data, id: response.data._id };
@@ -53,7 +54,7 @@ export const useTeachings = () => {
       if (data.youtubeUrl) formData.append("youtubeUrl", data.youtubeUrl);
 
       const response = await axios.post(
-        "http://localhost:5000/api/teachings/",
+        "https://rev-thomas.onrender.com/api/teachings/",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

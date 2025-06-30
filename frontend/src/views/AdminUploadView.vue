@@ -165,17 +165,20 @@ const handleChangePassword = async () => {
   passwordLoading.value = true;
   try {
     const token = localStorage.getItem("auth-token");
-    const res = await fetch("http://localhost:5000/api/auth/password", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        currentPassword: currentPassword.value,
-        newPassword: newPassword.value,
-      }),
-    });
+    const res = await fetch(
+      "https://rev-thomas.onrender.com/api/auth/password",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          currentPassword: currentPassword.value,
+          newPassword: newPassword.value,
+        }),
+      }
+    );
     const data = await res.json();
     if (!res.ok) throw new Error(data.message || "Failed to change password");
     passwordSuccess.value = "Password updated successfully.";

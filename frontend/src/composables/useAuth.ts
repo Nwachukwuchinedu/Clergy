@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
 import axios from "axios";
-import type {  AuthState } from "@/types";
+import type { AuthState } from "@/types";
 
 const authState = ref<AuthState>({
   isAuthenticated: false,
@@ -14,7 +14,9 @@ export const useAuth = () => {
 
   const getCurrentUser = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/auth/me");
+      const response = await axios.get(
+        "https://rev-thomas.onrender.com/api/auth/me"
+      );
       const user = response.data;
       authState.value.user = user;
       localStorage.setItem("auth-user", JSON.stringify(user));
@@ -44,7 +46,7 @@ export const useAuth = () => {
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://rev-thomas.onrender.com/api/auth/login",
         { email, password }
       );
       const token = response.data.token;
