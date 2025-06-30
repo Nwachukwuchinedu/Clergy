@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
 import axios from "axios";
-import type { User, AuthState } from "@/types";
+import type {  AuthState } from "@/types";
 
 const authState = ref<AuthState>({
   isAuthenticated: false,

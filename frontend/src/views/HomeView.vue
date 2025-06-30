@@ -6,7 +6,7 @@ import TeachingCard from "@/components/TeachingCard.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
-const { teachings, loading, fetchTeachings, searchTeachings } = useTeachings();
+const { loading, fetchTeachings, searchTeachings } = useTeachings();
 const searchQuery = ref("");
 const page = ref(1);
 const perPage = 5;

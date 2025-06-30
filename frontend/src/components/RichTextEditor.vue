@@ -168,7 +168,7 @@ const isActive = (name: string, options?: any) =>
 
     <!-- Editor -->
     <div class="prose-custom">
-      <EditorContent v-if="editor" :editor="editor" />
+ <EditorContent :editor="editor as Editor" />
     </div>
   </div>
 </template>
