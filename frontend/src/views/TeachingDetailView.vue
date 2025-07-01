@@ -20,6 +20,7 @@ const loading = ref(true);
 const error = ref<string | null>(null);
 const videoLoading = ref(true);
 const imageLoading = ref(true);
+const copySuccess = ref(false);
 
 const formattedDate = computed(() => {
   if (!teaching.value) return "";
@@ -55,6 +56,16 @@ const onVideoLoad = () => {
 };
 const onImageLoad = () => {
   imageLoading.value = false;
+};
+
+const copyLink = async () => {
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    copySuccess.value = true;
+    setTimeout(() => (copySuccess.value = false), 2000);
+  } catch (e) {
+    copySuccess.value = false;
+  }
 };
 
 onMounted(async () => {
@@ -197,7 +208,7 @@ onMounted(async () => {
             Help others discover this message by sharing it with your community.
           </p>
           <div class="flex justify-center space-x-4">
-            <button
+            <!-- <button
               class="glass-button text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
             >
               Share on Facebook
@@ -206,11 +217,13 @@ onMounted(async () => {
               class="glass-button text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
             >
               Share on Twitter
-            </button>
+            </button> -->
             <button
+              @click="copyLink"
               class="glass-button text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
             >
-              Copy Link
+              <span v-if="!copySuccess">Copy Link</span>
+              <span v-else class="text-green-500">Copied!</span>
             </button>
           </div>
         </div>
