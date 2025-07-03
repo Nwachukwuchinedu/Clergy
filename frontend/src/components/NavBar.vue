@@ -37,9 +37,10 @@ const closeMenu = () => {
           @click="closeMenu"
         >
           <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg flex items-center justify-center">
-            <span class="text-white font-bold text-sm">PT</span>
+            <span class="text-white font-bold text-sm">FT</span>
           </div>
-          <span>Pastor Teaching</span>
+          <span>
+            Fr. Tom Anavhe Reflection</span>
         </RouterLink>
 
         <!-- Desktop Navigation -->

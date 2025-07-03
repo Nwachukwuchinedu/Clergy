@@ -48,7 +48,8 @@ watch(searchQuery, () => {
           class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in"
         >
           Welcome to
-          <span class="text-gradient">Pastor Teaching</span>
+          <span class="text-gradient">
+            Fr. Tom Anavhe Reflection</span>
         </h1>
         <p
           class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed animate-slide-up"
